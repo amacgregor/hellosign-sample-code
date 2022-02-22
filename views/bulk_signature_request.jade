@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1= title
+
+  form#sendTemplate(method="post", enctype="multipart/form-data", action="/bulk_signature_request")
+    select#(name="template_id")
+      each template in templates
+        option(value=template.template_id)= template.title
+    input(type="file", name="signers_file")
+    input(type="submit", value="Send")
+
+
